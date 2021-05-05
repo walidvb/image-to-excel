@@ -6,7 +6,6 @@ const Oauth = () => {
   const router = useRouter()
   useEffect(() => {
     const { access_token, token_type } = queryString.parse(window.location.hash)
-    debugger
     localStorage.setItem('g_oauth', access_token)
     router.push('/')
   }, [])

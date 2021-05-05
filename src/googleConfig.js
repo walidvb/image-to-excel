@@ -1,4 +1,4 @@
-const API_KEY ='AIzaSyDgxKUNJf_L3LVGru6VZwVdKa_zwwPjv6g'
+const API_KEY ='AIzaSyCWnOdvp7uA0KiGhow2UDgTPqxymgChYTI'
 const SHEET_ID = '1n1YLh2pXO4fHZ5QGTJLkIxB4XNxKyvJ1jWFTG1LDSlM'
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 export default {

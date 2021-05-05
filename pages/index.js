@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import googleConfig from '../src/googleConfig'
+import initPicker from '../src/initPicker';
 
 const LoginToGoogle = () => {
   const [url, setUrl] = useState()
@@ -23,22 +24,30 @@ const LoginToGoogle = () => {
 
 
 export default function Home() {
+  const [readyForScript, setReadyForScript] = useState()
+  
   useEffect(() => {
     window.onApiLoad = () => {
-      console.log('loaded')
+      gapi.load('auth2');
+      gapi.load('picker', console.log);
     }
+    setReadyForScript(true)
   }, [])
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
-        <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
+        {readyForScript && <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>}
       </Head>
 
       <main className={styles.main}>
         <div>
           <LoginToGoogle />
+          <br />
+          <button onClick={initPicker} type="submit" value="pick">
+            Pick
+          </button>
         </div>
       </main>
 
