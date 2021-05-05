@@ -25,6 +25,7 @@ const LoginToGoogle = () => {
 
 export default function Home() {
   const [readyForScript, setReadyForScript] = useState()
+  const [documents, setDocuments] = useState()
   
   useEffect(() => {
     window.onApiLoad = () => {
@@ -33,6 +34,13 @@ export default function Home() {
     }
     setReadyForScript(true)
   }, [])
+
+  const onPick = () => {
+    initPicker(({ docs, ...rest }) => {
+      console.log(docs, rest)
+      setDocuments(docs)
+    })
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -45,9 +53,12 @@ export default function Home() {
         <div>
           <LoginToGoogle />
           <br />
-          <button onClick={initPicker} type="submit" value="pick">
+          <button onClick={onPick} type="submit" value="pick">
             Pick
           </button>
+        </div>
+        <div>
+          {documents && documents.map((d) => <div>{d.id}</div>)}
         </div>
       </main>
 
