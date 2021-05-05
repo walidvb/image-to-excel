@@ -19,4 +19,4 @@ async function initPicker(cb) {
   }
 } 
 
-export default initPickernpx tailwindcss init - p
+export default initPicker
